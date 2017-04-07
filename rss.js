@@ -69,7 +69,7 @@ module.exports = {
            //listobj.media.thumbnail = val['media:thumbnail'];
            //rss.image = list['itunes:image'].href[0];
            //var mainimage = list['itunes:image'].href;
-          var mainimage = list['itunes:image'].href[0];
+          var mainimage = list['itunes:image']['href'][0];
            //var mainimage = 'fuck';
          }
      

@@ -108,7 +108,7 @@ module.exports = {
              }
             // GC
              if (val['media:thumbnail']) {
-                //obj.thumb_square = val.media[0].url[0];
+                obj.media = val.media || {};
                 obj.thumb_square = val['media:thumbnail'][0].url[0];
              }
              if(!util.isArray(val.enclosure)){

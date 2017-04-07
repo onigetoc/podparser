@@ -71,8 +71,8 @@ module.exports = {
            //var mainimage = list['itunes:image'].href;
            // obj.media.thumbnail = val['media:thumbnail'];
            //val['media:content']['media:thumbnail'][0].url[0];
-           var mainimage = list['itunes:image'][0].href[0];
-           //var mainimage = listobj.itunes.href[0];
+           //var mainimage = list['itunes:image'][0].href[0];
+           var mainimage = list['itunes:image'];
            //var mainimage = 'fuck';
          }
      
@@ -113,7 +113,7 @@ module.exports = {
                obj.media.content = val['media:content'];
                obj.thumb_square = val['media:content']['media:thumbnail'][0].url[0];
              }else if(mainimage){
-                 obj.thumb_square = mainimage;
+                 obj.thumb_square = mainimage.href[0];
              }
              if (val['media:thumbnail']) {
                 obj.media = val.media || {};

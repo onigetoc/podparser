@@ -105,6 +105,7 @@ module.exports = {
                 //obj.thumb_square = val.media.thumbnail[0].url[0];
                 obj.thumb_square = 'TEST_IMAGE';
              }
+            obj.thumb_square = 'TEST_IMAGE';
              if (val['itunes:duration']){
                  obj.duration = val['itunes:duration'][0];
              }

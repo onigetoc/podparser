@@ -79,7 +79,7 @@ module.exports = {
            list.item.forEach(function(val){
              var obj = {};
             
-             obj.service = 'podcast';
+             //obj.service = 'podcast';
             
              obj.title = !util.isNullOrUndefined(val.title)?val.title[0]:'';
              obj.description = !util.isNullOrUndefined(val.description)?val.description[0]:'';

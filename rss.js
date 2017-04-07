@@ -88,7 +88,7 @@ module.exports = {
              obj.url = obj.link = !util.isNullOrUndefined(val.link)?val.link[0]:'';
             
              if (val.category) {
-               rss.group = val.category[0];
+               obj.group = val.category[0];
              }
 
              if (val.pubDate) {

@@ -103,10 +103,10 @@ module.exports = {
                 obj.media = val.media || {};
                 obj.media.thumbnail = val['media:thumbnail'];
                 //obj.thumb_square = val.media.thumbnail[0].url[0];
-                obj.thumb_square = 'TEST_IMAGE';
+                obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
+                //obj.thumb_square = 'TEST_IMAGE';
+              //obj.thumb_square = val.media.content['media:thumbnail'][0].url[0];
              }
-                //obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
-                obj.thumb_square = val.media.content['media:thumbnail'][0].url[0];
             
              if (val['itunes:duration']){
                  obj.duration = val['itunes:duration'][0];

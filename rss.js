@@ -63,6 +63,11 @@ module.exports = {
         if(util.isArray(json.rss.channel))
           list = json.rss.channel[0]; 
 
+         if (list['itunes:image']){
+            rss.image = list['itunes:image'][0].href[0];
+          var mainimage = list['itunes:image'][0].href[0];
+         }
+     
          if (list.title) {
             rss.title = list.title[0];
          }
@@ -98,7 +103,9 @@ module.exports = {
               if (val['media:content']) {
                obj.media = val.media || {};
                obj.media.content = val['media:content'];
-               obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
+               obj.thumb_square = val['media:content']['media:thumbnail'][0].url[0];
+             }else if(mainimage){
+                 obj.thumb_square = mainimage;
              }
              if (val['media:thumbnail']) {
                 obj.media = val.media || {};

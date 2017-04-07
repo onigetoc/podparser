@@ -61,9 +61,9 @@ module.exports = {
         var list = json.rss.channel;
         var rss = {item:[]};
         if(util.isArray(json.rss.channel))
-          list = json.rss.channel[0];
+          list = json.rss.channel[0]; 
 
-        if (list.title) {
+         if (list.title) {
             rss.title = list.title[0];
          }
          if (list.description) {
@@ -86,6 +86,10 @@ module.exports = {
                obj.content = val['content:encoded'];
              }
              obj.url = obj.link = !util.isNullOrUndefined(val.link)?val.link[0]:'';
+            
+             if (val.category) {
+               rss.group = val.category[0];
+             }
 
              if (val.pubDate) {
                //obj.created = Date.parse(val.pubDate[0]);

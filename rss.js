@@ -107,11 +107,7 @@ module.exports = {
                  obj.duration = val['itunes:duration'][0];
              }
              if(val.enclosure){
-                if(!util.isArray(val.enclosure)){
-                  obj.media_url = val.enclosure[0].url;
-                  obj.type = val.enclosure[0].type;
-                }
-                else if(val.enclosure.length == 1){
+                if(val.enclosure.length == 1){
                   obj.media_url = val.enclosure[0].url;
                   obj.type = val.enclosure[0].type;
                 }

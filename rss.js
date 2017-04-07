@@ -66,8 +66,8 @@ module.exports = {
          var mainimage = '';
          if (list['itunes:image']){ 
            //var mainimage = list['itunes:image'][0].href[0];
-           var mainimage = list['itunes:image'][0];
-           //var mainimage = 'fuck';
+           //var mainimage = list['itunes:image'][0];
+           var mainimage = 'fuck';
          }
      
          if (list.title) {

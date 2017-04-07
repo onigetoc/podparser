@@ -109,7 +109,7 @@ module.exports = {
             // GC
              //if (val['media:thumbnail']) {
                obj.media = val.media || {};
-               obj.thumb_square = val['media:thumbnail'].url[0];
+               obj.thumb_square = val['media:thumbnail'][0];
                //obj.thumb_square = 'TEST_IMAGE';
              //}
              if(!util.isArray(val.enclosure)){

@@ -1,4 +1,4 @@
-# Simple RSS to JSON service
+# Node Podcast parser for my web app
 
 ## Run locally
 

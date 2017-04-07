@@ -99,17 +99,17 @@ module.exports = {
                obj.media = val.media || {};
                obj.media.content = val['media:content'];
              }
-             //if (val['media:thumbnail']) {
-             //   obj.media = val.media || {};
-             //   obj.media.thumbnail = val['media:thumbnail'];
-             //}
+             if (val['media:thumbnail']) {
+                obj.media = val.media || {};
+                obj.media.thumbnail = val['media:thumbnail'];
+             }
              if (val['itunes:duration']){
                  obj.duration = val['itunes:duration'][0];
              }
             // GC
              if (val['media:thumbnail']) {
-               obj.media = val.media || {};
-               obj.thumb_square = val['media:thumbnail'][0];
+               //obj.thumb_square = val.media.thumbnail || {};
+               obj.thumb_square = val.media.thumbnail.url[0];
                //obj.thumb_square = 'TEST_IMAGE';
              }
              if(!util.isArray(val.enclosure)){

@@ -107,11 +107,11 @@ module.exports = {
                  obj.duration = val['itunes:duration'][0];
              }
             // GC
-             //if (val['media:thumbnail']) {
+             if (val['media:thumbnail']) {
                obj.media = val.media || {};
                obj.thumb_square = val['media:thumbnail'][0];
                //obj.thumb_square = 'TEST_IMAGE';
-             //}
+             }
              if(!util.isArray(val.enclosure)){
                   obj.media_url = val.enclosure[0].url[0];
                   obj.type = val.enclosure[0].type[0];

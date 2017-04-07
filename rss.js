@@ -108,28 +108,30 @@ module.exports = {
              }
              if(val.enclosure){
                 if(!util.isArray(val.enclosure)){
-                    obj.media_url = val.enclosure[0].url;
+                  obj.media_url = val.enclosure[0].url;
+                  obj.type = val.enclosure[0].type;
                 }
                 else if(val.enclosure.length == 1){
-                    obj.media_url = val.enclosure[0].url;
+                  obj.media_url = val.enclosure[0].url;
+                  obj.type = val.enclosure[0].type;
                 }
 
               }
             //////
-             if(val.enclosure){
-                if(!util.isArray(val.enclosure)){
-                    obj.enclosure = copyEntry(val.enclosure);
-                }
-                else if(val.enclosure.length == 1){
-                    obj.enclosure = copyEntry(val.enclosure[0]);
-                }
-                else{
-                    obj.enclosure = [];
-                    val.enclosure.forEach(function(enclosure){
-                      obj.enclosure.push(copyEntry(enclosure));
-                    });
-                }
-              }
+//              if(val.enclosure){
+//                 if(!util.isArray(val.enclosure)){
+//                     obj.enclosure = copyEntry(val.enclosure);
+//                 }
+//                 else if(val.enclosure.length == 1){
+//                     obj.enclosure = copyEntry(val.enclosure[0]);
+//                 }
+//                 else{
+//                     obj.enclosure = [];
+//                     val.enclosure.forEach(function(enclosure){
+//                       obj.enclosure.push(copyEntry(enclosure));
+//                     });
+//                 }
+//               }
               rss.item.push(obj);
 
            });

@@ -64,9 +64,9 @@ module.exports = {
           list = json.rss.channel[0]; 
 
          if (list['itunes:image']){
-            //rss.image = list['itunes:image'][0].href[0];
-           //var mainimage = list['itunes:image'][0].href[0];
-          var mainimage = 'fuck';
+           rss.image = list['itunes:image'].href[0];
+           var mainimage = list['itunes:image'].href[0];
+           //var mainimage = 'fuck';
          }
      
          if (list.title) {

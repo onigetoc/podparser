@@ -117,21 +117,7 @@ module.exports = {
                 }
 
               }
-            //////
-             if(val.enclosure){
-                if(!util.isArray(val.enclosure)){
-                    obj.enclosure = copyEntry(val.enclosure);
-                }
-                else if(val.enclosure.length == 1){
-                    obj.enclosure = copyEntry(val.enclosure[0]);
-                }
-                else{
-                    obj.enclosure = [];
-                    val.enclosure.forEach(function(enclosure){
-                      obj.enclosure.push(copyEntry(enclosure));
-                    });
-                }
-              }
+
               rss.item.push(obj);
 
            });

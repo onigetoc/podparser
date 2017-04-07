@@ -64,7 +64,7 @@ module.exports = {
           channel = json.rss.channel[0];
 
         if (channel.title) {
-            rss.channel = list.title[0];
+            rss.title = channel.title[0];
          }
          if (channel.description) {
              rss.description = channel.description[0];
@@ -73,14 +73,11 @@ module.exports = {
              rss.url = channel.link[0];
          }
          if (channel.item) {
-           if (!util.isArray(list.item)) {
-             list.item = [list.item];
+           if (!util.isArray(channel.item)) {
+             channel.item = [channel.item];
            }
            channel.item.forEach(function(val){
              var obj = {};
-            
-             //obj.service = 'podcast';
-            
              obj.title = !util.isNullOrUndefined(val.title)?val.title[0]:'';
              obj.description = !util.isNullOrUndefined(val.description)?val.description[0]:'';
              // GC Add content:encoded

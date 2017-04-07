@@ -97,7 +97,7 @@ module.exports = {
              }
             // GC
              if (val['media:thumbnail']) {
-                obj.media = val.media || {};
+                //obj.media = val.media || {};
                 obj.thumb_square = val['media:thumbnail'][0].url[0];
              }
              if(!util.isArray(val.enclosure)){
@@ -111,18 +111,6 @@ module.exports = {
                 }
 
               }
-            //
-             if (val['media:content']) {
-               obj.media = val.media || {};
-               obj.media.content = val['media:content'];
-             }
-             if (val['media:thumbnail']) {
-                obj.media = val.media || {};
-                obj.media.thumbnail = val['media:thumbnail'];
-             }
-             if (val['itunes:duration']){
-                 obj.duration = val['itunes:duration'][0];
-             }
 
               rss.item.push(obj);
 

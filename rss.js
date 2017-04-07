@@ -64,15 +64,15 @@ module.exports = {
           list = json.rss.channel[0]; 
 
          if (list['itunes:image']){
-           listobj.itunes = list['itunes:image'] || {};
+           //listobj.itunes = list['itunes:image'] || {};
            //listobj.media = val.media || {};
            //listobj.media.thumbnail = val['media:thumbnail'];
            //rss.image = list['itunes:image'].href[0];
            //var mainimage = list['itunes:image'].href;
            // obj.media.thumbnail = val['media:thumbnail'];
            //val['media:content']['media:thumbnail'][0].url[0];
-           //var mainimage = list['itunes:image']['href'];
-           var mainimage = listobj.itunes.href[0];
+           var mainimage = list['itunes:image'][0].href[0];
+           //var mainimage = listobj.itunes.href[0];
            //var mainimage = 'fuck';
          }
      

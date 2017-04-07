@@ -95,17 +95,6 @@ module.exports = {
                //obj.created = Date.parse(val.pubDate[0]);
                obj.pubDate = val.pubDate[0];
              }
-             if (val['media:content']) {
-               obj.media = val.media || {};
-               obj.media.content = val['media:content'];
-             }
-             if (val['media:thumbnail']) {
-                obj.media = val.media || {};
-                obj.media.thumbnail = val['media:thumbnail'];
-             }
-             if (val['itunes:duration']){
-                 obj.duration = val['itunes:duration'][0];
-             }
             // GC
              if (val['media:thumbnail']) {
                 obj.media = val.media || {};
@@ -122,6 +111,18 @@ module.exports = {
                 }
 
               }
+            //
+             if (val['media:content']) {
+               obj.media = val.media || {};
+               obj.media.content = val['media:content'];
+             }
+             if (val['media:thumbnail']) {
+                obj.media = val.media || {};
+                obj.media.thumbnail = val['media:thumbnail'];
+             }
+             if (val['itunes:duration']){
+                 obj.duration = val['itunes:duration'][0];
+             }
 
               rss.item.push(obj);
 

@@ -113,7 +113,7 @@ module.exports = {
                obj.media.content = val['media:content'];
                obj.thumb_square = val['media:content']['media:thumbnail'][0].url[0];
              }else if(mainimage){
-                 obj.thumb_square = mainimage.href[0];
+                 obj.thumb_square =  val.mainimage.href[0];
              }
              if (val['media:thumbnail']) {
                 obj.media = val.media || {};

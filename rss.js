@@ -58,25 +58,25 @@ module.exports = {
 
     },
     parser: function(json){
-        var list = json.rss.channel;
+        var channel = json.rss.channel;
         var rss = {item:[]};
         if(util.isArray(json.rss.channel))
-          list = json.rss.channel[0];
+          channel = json.rss.channel[0];
 
-        if (list.title) {
-            rss.title = list.title[0];
+        if (channel.title) {
+            rss.channel = list.title[0];
          }
-         if (list.description) {
-             rss.description = list.description[0];
+         if (channel.description) {
+             rss.description = channel.description[0];
          }
-         if (list.link) {
+         if (channel.link) {
              rss.url = channel.link[0];
          }
-         if (list.item) {
+         if (channel.item) {
            if (!util.isArray(list.item)) {
              list.item = [list.item];
            }
-           list.item.forEach(function(val){
+           channel.item.forEach(function(val){
              var obj = {};
             
              //obj.service = 'podcast';

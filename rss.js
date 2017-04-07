@@ -98,12 +98,13 @@ module.exports = {
               if (val['media:content']) {
                obj.media = val.media || {};
                obj.media.content = val['media:content'];
+               obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
              }
              if (val['media:thumbnail']) {
                 obj.media = val.media || {};
                 obj.media.thumbnail = val['media:thumbnail'];
                 //obj.thumb_square = val.media.thumbnail[0].url[0];
-                obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
+                //obj.thumb_square = val['media:content'][0]['media:thumbnail'][0].url[0];
                 //obj.thumb_square = 'TEST_IMAGE';
               //obj.thumb_square = val.media.content['media:thumbnail'][0].url[0];
              }

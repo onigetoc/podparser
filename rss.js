@@ -68,9 +68,9 @@ module.exports = {
            //listobj.media = val.media || {};
            //listobj.media.thumbnail = val['media:thumbnail'];
            //rss.image = list['itunes:image'].href[0];
-          rss.image = 'fuck';
            //var mainimage = list['itunes:image'].href;
-           var mainimage = 'fuck';
+          var mainimage = list['itunes:image'];
+           //var mainimage = 'fuck';
          }
      
          if (list.title) {

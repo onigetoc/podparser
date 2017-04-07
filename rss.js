@@ -58,25 +58,25 @@ module.exports = {
 
     },
     parser: function(json){
-        var channel = json.rss.channel;
+        var list = json.rss.channel;
         var rss = {item:[]};
         if(util.isArray(json.rss.channel))
-          channel = json.rss.channel[0];
+          list = json.rss.channel[0];
 
-        if (channel.title) {
-            rss.title = channel.title[0];
+        if (list.title) {
+            rss.title = list.title[0];
          }
-         if (channel.description) {
-             rss.description = channel.description[0];
+         if (list.description) {
+             rss.description = list.description[0];
          }
-         if (channel.link) {
-             rss.url = channel.link[0];
+         if (list.link) {
+             rss.url = list.link[0];
          }
-         if (channel.item) {
-           if (!util.isArray(channel.item)) {
-             channel.item = [channel.item];
+         if (list.item) {
+           if (!util.isArray(list.item)) {
+             list.item = [list.item];
            }
-           channel.item.forEach(function(val){
+           list.item.forEach(function(val){
              var obj = {};
              obj.title = !util.isNullOrUndefined(val.title)?val.title[0]:'';
              obj.description = !util.isNullOrUndefined(val.description)?val.description[0]:'';

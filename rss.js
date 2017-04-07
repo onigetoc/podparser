@@ -108,6 +108,16 @@ module.exports = {
              }
              if(val.enclosure){
                 if(!util.isArray(val.enclosure)){
+                    obj.media_url = val.enclosure[0].url;
+                }
+                else if(val.enclosure.length == 1){
+                    obj.media_url = val.enclosure[0].url;
+                }
+
+              }
+            //////
+             if(val.enclosure){
+                if(!util.isArray(val.enclosure)){
                     obj.enclosure = copyEntry(val.enclosure);
                 }
                 else if(val.enclosure.length == 1){

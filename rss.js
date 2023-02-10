@@ -86,8 +86,8 @@ module.exports = {
            }
 
           // GC 
-         list.item.slice(0, limit)(function(val){ 
-//          list.item.slice(-20)(function(val){
+         list.item.slice(0, limit).forEach(function(val){ 
+//          list.item.slice(-20).forEach(function(val){
 //          list.item.forEach(function(val){
              var obj = {};
              obj.service = 'podcast';

@@ -84,10 +84,11 @@ module.exports = {
            if (!util.isArray(list.item)) {
              list.item = [list.item];
            }
-          
- //         list.item.slice(0, limit)(function(val){ // GC 
-//          list.item.slice(-20)(function(val){ // GC
-          list.item.forEach(function(val){
+
+          // GC 
+         list.item.slice(0, limit)(function(val){ 
+//          list.item.slice(-20)(function(val){
+//          list.item.forEach(function(val){
              var obj = {};
              obj.service = 'podcast';
              obj.title = !util.isNullOrUndefined(val.title)?val.title[0]:'';

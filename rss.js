@@ -1,6 +1,9 @@
 
 // Invoke 'strict' JavaScript mode
 'use strict';
+
+const limit = 20; // GC
+
  var  util = require('util'),
       xml2js = require('xml2js'),
       request = require('request');
@@ -13,7 +16,6 @@ function copyEntry(obj){
    }
    return result;
 }
-
 
 module.exports = {
     load: function(url, callback){
@@ -82,7 +84,10 @@ module.exports = {
            if (!util.isArray(list.item)) {
              list.item = [list.item];
            }
-           list.item.forEach(function(val){
+          
+
+           list.item..slice(-20)(function(val){ // GC
+//            list.item.forEach(function(val){
              var obj = {};
              obj.service = 'podcast';
              obj.title = !util.isNullOrUndefined(val.title)?val.title[0]:'';

@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "Podcast",
+    "Podcast parser",
+    "RSS",
+    "RSS feeds"],
   "author": "",
   "license": "ISC",
   "dependencies": {

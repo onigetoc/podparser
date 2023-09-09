@@ -13,7 +13,6 @@ function copyEntry(obj) {
   return result;
 }
 
-
 module.exports = {
   load: function(url, callback) {
     var $ = this;

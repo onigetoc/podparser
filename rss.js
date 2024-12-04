@@ -33,15 +33,11 @@ function fetchUrl(url, callback) {
   });
 }
 
+// Modification 1: dans la fonction cleanXML
 function cleanXML(xml) {
-  // On utilise le 'match' pour avoir accès au tag complet pour le debugging si nécessaire
-  console.log('Cleaning XML...');
-  return xml.replace(/<(\/?)itunes:([^>]+)>/g, function(match, slash, rest) {
-    console.log('Found iTunes tag:', match);
-    const cleaned = '<' + slash + rest + '>';
-    console.log('Cleaned to:', cleaned);
-    return cleaned;
-  });
+  let cleanedXml = xml;
+  cleanedXml = cleanedXml.replace(/<(\/?)(dc|itunes):([^>]+)>/g, '<$1$3>');
+  return cleanedXml;
 }
 
 function extractImageFromDescription(description) {
@@ -113,7 +109,8 @@ module.exports = {
       throw new Error('Invalid RSS format');
     }
 
-    const rss = { item: [] };
+    const feed = {};
+    const response = { status: 'ok', feed: feed, items: [] };
 
     // Gestion enrichie des images principales
     const mainimage = list.image?.[0]?.href?.[0] || 
@@ -121,17 +118,18 @@ module.exports = {
                      list['media:thumbnail']?.[0]?.url?.[0];
 
     if (mainimage) {
-      rss.image = { href: mainimage };
+      feed.image = mainimage;
     }
 
     // Informations de base du channel
-    rss.title = list.title?.[0] || '';
-    rss.description = list.description?.[0] || '';
-    rss.url = list.link?.[0] || '';
-    rss.author = list.author?.[0] || '';
-    rss.playlistURL = list.link?.[0] || '';
-    rss.language = list.language?.[0] || '';
-    rss.lastBuildDate = list.lastBuildDate?.[0] || '';
+    feed.title = list.title?.[0] || '';
+    feed.description = list.description?.[0] || '';
+    feed.link = list.link?.[0] || '';
+    feed.url = feed.link; // Garder url comme alias de link
+    feed.author = list.author?.[0] || '';
+    feed.playlistURL = list.link?.[0] || '';
+    feed.language = list.language?.[0] || '';
+    feed.lastBuildDate = list.lastBuildDate?.[0] || '';
 
     const parsedItems = [];
     if (list.item) {
@@ -145,7 +143,7 @@ module.exports = {
           title: val.title?.[0] || '',
           description: val.description?.[0] || '',
           group: val.category?.[0] || '',
-          author: val.author?.[0] || list.author?.[0] || '',
+          author: val.creator?.[0] || val.author?.[0] || list.author?.[0] || '', // Notez l'ordre : creator en premier
           pubDate: val.pubDate?.[0] || ''
         };
 
@@ -164,7 +162,7 @@ module.exports = {
         }
 
         // Gestion enrichie des images (comme dans votre PHP)
-        obj.thumb_square = 
+        obj.thumbnail = 
           val.image?.[0]?.href?.[0] ||                          // Direct image
           val['media:thumbnail']?.[0]?.url?.[0] ||             // Media thumbnail
           val['media:content']?.[0]?.['media:thumbnail']?.[0]?.url?.[0] || // Nested media thumbnail
@@ -180,30 +178,24 @@ module.exports = {
       });
     }
 
-    return {
-      title: rss.title,
-      description: rss.description,
-      url: rss.url,
-      author: rss.author,
-      image: rss.image,
-      language: rss.language,
-      lastBuildDate: rss.lastBuildDate,
-      item: parsedItems
-    };
+    response.items = parsedItems;
+    return response;
+
   },
 
   parseAtom: function(json) {
     const feed = json.feed;
-    const rss = { item: [] };
+    const response = { status: 'ok', feed: {}, items: [] };
 
     if (feed.title) {
-      rss.title = feed.title[0];
+      response.feed.title = feed.title[0];
     }
     if (feed.subtitle) {
-      rss.description = feed.subtitle[0];
+      response.feed.description = feed.subtitle[0];
     }
     if (feed.link) {
-      rss.url = feed.link[0].href || feed.link[0];
+      response.feed.link = feed.link[0].href || feed.link[0];
+      response.feed.url = response.feed.link;
     }
 
     if (feed.entry) {
@@ -228,11 +220,11 @@ module.exports = {
         }
 
         console.log('Parsed Atom entry:', obj);
-        rss.item.push(obj);
+        response.items.push(obj);
       });
     }
 
-    return rss;
+    return response;
   },
 
   read: function(url, callback) {

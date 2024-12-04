@@ -22,9 +22,16 @@ Two server implementations are available:
 ## Run locally
 
 ```
-node server.js
+node server.js OR serveraxios.js
 or
-npm start
+// change script--start in package.json for start only for serveraxios.js
+npm start 
+npm run start:axios 
+
+bun start
+bun start:axios
+// change script--start in package.json for using start only for serveraxios.js
+
 ```
 
 ## Request Usage

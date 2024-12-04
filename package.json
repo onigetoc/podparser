@@ -1,0 +1,25 @@
+{
+  "name": "rss-podcast-parser",
+  "version": "2.0.0",
+  "description": "RSS and Podcast feed parser with JSON output",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:axios": "node serveraxios.js"
+  },
+  "keywords": [
+    "Podcast",
+    "Podcast parser",
+    "RSS",
+    "RSS feeds"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "xml2js": "^0.6.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
